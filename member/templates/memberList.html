@@ -1,0 +1,15 @@
+<h1>List of Members</h1>
+
+ {% for member in members %}
+    <h2>Name: {{member.first_name}} {{member.last_name}} <br> </h2>
+    <h2><span style="color: lightgreen;">Username</span>: 
+        {{member.username}} 
+        <span style="color: lightgreen;"> Status</span> : 
+         {{member.post}} 
+    </h2>
+    <p>E-Mail: {{member.mail}} <br>Phone: {{member.phone}} </p>
+ {% endfor %}
+
+ <!-- the curly braces is how you implement statements and variables of python -->
+
+<!-- Next create a url for this html page by first creating urls.py -->

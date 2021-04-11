@@ -1,0 +1,20 @@
+<h1>Signup Form</h1>
+
+<form action="/signup"  method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <p>
+    {{ field.label_tag }}<br>
+    {{ field }}
+    {% if field.help_text %}
+      <small style="color: grey">{{ field.help_text }}</small>
+    {% endif %}
+    {% for error in field.errors %}
+      <p style="color: red">{{ error }}</p>
+    {% endfor %}
+    </p>
+    {% endfor %}
+    <br>
+    <input type="submit" value="Sign Up">
+</form>
+<!-- Create url /signup in urls.py -->
