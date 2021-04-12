@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import member # need to do this
 from .forms import SignupForm
 from django.contrib.auth.hashers import make_password #this is used for hashing the password field
+#from django.contrib.auth.models import User #to manually register user
+from django.contrib.auth import authenticate, login, logout, models
 # Create your views here.
 
 def memberList(request):
@@ -16,15 +18,21 @@ def memberList(request):
 
 def signup(request): #to make a form to accept this create forms.py
     if request.method == 'POST':
-        form= SignupForm(request.POST)
+        form= SignupForm(request.POST)# request.POST is going to populate the fields
         if form.is_valid() :
             instance=form.save(commit=False) #not commiting to database but saving
             #before saving instance of the form you can alter the fields but not after
-            instance.password=make_password(instance.password)
+           
             instance.first_name=instance.first_name[0].upper() + instance.first_name[1:]
             instance.last_name=instance.last_name[0].upper() + instance.last_name[1:]
             instance.mail=instance.mail.lower()
+            user = models.User.objects.create_user(instance.username, instance.mail, instance.password)
+            user.first_name=instance.first_name
+            user.last_name=instance.last_name
+            user.save()
+            instance.password=make_password(instance.password)
             instance.save()
+
             return redirect('list') #sends you to the list url
     else:
         form = SignupForm() #empty form if you havent done anything

@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/sswastik02/proj/mayukh_proj/env/bin/python"
+    "python.pythonPath": "/home/sswastik02/proj/mayukh_proj/env/bin/python",
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
 }
