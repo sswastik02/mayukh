@@ -1,6 +1,8 @@
-<h1>Signup Form</h1>
+{% extends 'base.html' %}
+{% block content %}  
+<!-- this basically populates the empty block in base.html -->
 
-<form action="/signup"  method="post">
+<form action="/signup"  method="post" class="form_content">
     {% csrf_token %}
     {% for field in form %}
     <p>
@@ -18,3 +20,5 @@
     <input type="submit" value="Sign Up">
 </form>
 <!-- Create url /signup in urls.py -->
+
+{% endblock %}

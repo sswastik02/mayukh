@@ -106,3 +106,21 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     font-size: 1.2rem;
     transition: all 0.3s ease;
 }
+.content {
+    height: 100vh;
+    background: rgb(175, 232, 255);
+    background-image: url("/static/img/form_background.jpeg");
+    background-size: 100%;
+    padding-top: 20vh;  /* should have been 25 like below but i wanted 20*/
+}
+
+.form_content {
+    margin:0 25vw; /* 25vw cuz width is 50vw therefore centre at 25vw shift by 25vw to get desired results*/
+    background-color: rgba(0, 0, 245, 0.05);
+    backdrop-filter:  saturate(100%) contrast(45%) brightness(130%); /* glass effect */
+    border: 1px solid #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    width: 50vw;
+    height: 50vh;
+}

@@ -1,9 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}  
+<!-- this basically populates the empty block in base.html -->
 <h2>Name: {{member.first_name}} {{member.last_name}} <br> </h2>
     <h2><span style="color: lightgreen;">Username</span>: 
         {{member.username}} 
         <span style="color: lightgreen;"> Designation</span> : 
          {{member.post}} <br><br>
-         <span style="color: lightgreen;"> Status</span> : 
-         {{member.current}}
     </h2>
     <p>E-Mail: {{member.mail}} <br>Phone: {{member.phone}} </p>
+
+{% endblock %}

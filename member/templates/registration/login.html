@@ -1,5 +1,9 @@
 <!-- templates/registration/login.html -->
-<form method="post">
+{% extends 'base.html' %}
+{% block content %}  
+<!-- this basically populates the empty block in base.html -->
+<div class="login_container">
+<form method="post" class="form_content">
     {% csrf_token %}
     {%for i in form.non_field_errors%}
     <p style="color: red">{{ i }}</p><!-- non-field errors are to be dealt with differently such as incorrect username and password-->
@@ -7,7 +11,7 @@
     <!-- non field errors are always at top of form in DOM -->
     {% for field in form %}
     <p>
-    {{ field.label_tag }}<br>
+    {{ field.label_tag }}
     {{ field }}
     {% if field.help_text %}
       <small style="color: grey">{{ field.help_text }}</small>
@@ -18,6 +22,7 @@
     </p>
     {% endfor %}
     
-    <br>
     <button type="submit">Log In</button>
 </form>
+</div>
+{% endblock %}
