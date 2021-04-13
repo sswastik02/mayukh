@@ -3,7 +3,8 @@ from .models import member # need to do this
 from .forms import SignupForm
 from django.contrib.auth.hashers import make_password #this is used for hashing the password field
 #from django.contrib.auth.models import User #to manually register user
-from django.contrib.auth import authenticate, login, logout, models
+from django.contrib.auth import authenticate, login, logout, models, decorators
+
 # Create your views here.
 
 def memberList(request):
@@ -32,9 +33,14 @@ def signup(request): #to make a form to accept this create forms.py
             user.save()
             instance.password=make_password(instance.password)
             instance.save()
-
-            return redirect('list') #sends you to the list url
+            login(request,user)  #login the user after signup but if i did this i could have implemented login but forms would be a hassle
+            return redirect('/') #sends you to the home url
     else:
         form = SignupForm() #empty form if you havent done anything
         #or just visited
     return render(request,'SignupForm.html',{'form':form}) #now make a template for this
+
+@decorators.login_required
+def profile(request):
+    member_profile=member.objects.get(username=request.user.username) # request.username gets tou the currently logged in user
+    return render(request, 'profile.html', {'member':member_profile})

@@ -1,10 +1,46 @@
 <!-- templates/home.html-->
+{% load static%} 
+<!-- this will actually load from static files defined in settings -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayukh</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav_container">
+            <div class="nav_logo_container">
+                <a href="#home" class="navbar_logo">Mayukh</a>
+            </div>
+            <div class="nav_menu">
+                <div class="nav_links">
+                    <a href="#home" class="nav_link" id="home-page">Home</a>
+                    <a href="#about" class="nav_link"  id="about-page">About</a>
+                    <a href="#services" class="nav_link"  id="service-page">Services</a>
+                </div>
+                <div class="navbar_menu_other">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="nav_link_other"  id="profile-page">Profile</a>
+                    <a href="{% url 'logout' %}" class="nav_link_other"  id="logout-page">Log Out</a> <!--these urls are working cuz of the dir we added in settings-->
+                    {% else %}
+                    <a href="{% url 'signup' %}" class="nav_link_other"  id="signup-page">Sign Up</a>
+                    <a href="{% url 'login' %}" class="nav_link_other"  id="login-page">Log In</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
 
-
-{% if user.is_authenticated %}
+<!-- {% if user.is_authenticated %}
   Hi {{ user.username }}!
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
-{% endif %}
+{% endif %} -->

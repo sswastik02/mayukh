@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    padding: 0;
+    margin: 0; /* this removes unneccessary margin */
+}
+
+.navbar{
+    background-color: rgb(37, 37, 37);
+    margin: none;
+    border: none;
+    align-items: center;
+    display: flex;
+    position:sticky;
+    z-index: 999;
+    height: 80px;
+
+}
+.nav_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.nav_logo_container{
+    background: #00C9FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #92FE9D, #00C9FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    margin-left: 20px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color:transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+.nav_logo_container:hover {
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+}
+.nav_menu{
+    justify-content: space-between;
+    height: 100%;
+    width:700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.nav_link{
+    background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color:transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    font-weight: 600;
+    font-size: 1.4rem;
+    outline: none;
+    border: none;
+    margin:0 40px;
+    transition: all 0.3s ease;
+
+}
+
+.nav_link:hover {
+    font-size: 2.2rem;
+    transition: all 0.3s ease;
+}
+
+.navbar_menu_other {
+    justify-content: space-between;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav_link_other{
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 20px;
+    color:white;    
+    transition: all 0.3s ease;
+}
+
+.nav_link_other:hover {
+    padding: 15px 30px;
+    margin: 0 20px;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
