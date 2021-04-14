@@ -14,6 +14,7 @@
     align-items: center;
     display: flex;
     position:sticky;
+    top:0;  /* this is important */
     z-index: 999;
     height: 80px;
 
@@ -107,20 +108,97 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     transition: all 0.3s ease;
 }
 .content {
-    height: 100vh;
     background: rgb(175, 232, 255);
     background-image: url("/static/img/form_background.jpeg");
-    background-size: 100%;
-    padding-top: 20vh;  /* should have been 25 like below but i wanted 20*/
+    height: 100vh;
+}
+.content .login_container{
+    padding-top: 10vh;
+}
+.content .signup_container{
+    padding-top: 5vh;
 }
 
-.form_content {
+.content .form_content {
     margin:0 25vw; /* 25vw cuz width is 50vw therefore centre at 25vw shift by 25vw to get desired results*/
     background-color: rgba(0, 0, 245, 0.05);
     backdrop-filter:  saturate(100%) contrast(45%) brightness(130%); /* glass effect */
     border: 1px solid #fff;
     border-radius: 15px;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-    width: 50vw;
-    height: 50vh;
+    max-width: 70vw;
+    max-height: 100vh;
 }
+.content .field_tag, .field_blank, .form_title, .form_btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+    font-size: 1.5rem;
+}
+
+.content .form_title{
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.content .form_btn button {
+    position: relative;
+    margin: 2vh 0;
+    width: 40vw;
+    height: 5vh;
+    color: blue;
+    border: 2px solid blue;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.content .form_btn button:after {
+    position: absolute;
+    content: '';
+    top:0;
+    left:0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(0, 68, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.content .form_btn button:hover {
+    color: white;
+}
+
+.content .form_btn button:hover:after {
+    width:100%;
+}
+
+
+.content .field_tag#signup, .field_blank#signup, .form_title#signup, .form_btn#signup {
+    margin-top: 1vh;
+}
+
+.content .field_blank input, select{
+    width:25vw;
+    height: 2vw;
+    font-size: 1.8vw;
+    background: transparent;
+    border: 2px solid rgba(0, 0, 255, 0.3);
+    color:gold;
+}
+.content .field_blank select {
+    font-size: 1vw;
+}
+
+.content .field_blank select option{
+    background-color: teal;
+}
+
+.content .field_blank input:focus, select:focus {
+    border: 2px solid rgb(0, 0, 255);
+    outline:none;
+}
+

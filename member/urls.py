@@ -8,10 +8,11 @@ urlpatterns = [
     path('signup', views.signup, name='signup'),
     # name is the alias of the url defined through path
     path('accounts/',include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'), #trailing comma is important as 
+    path('', views.home, name='home'), #trailing comma is important as 
     #                                                                       adding a url at any postion would be the same
     #                                                                       end or middle
-    path('profile',views.profile, name='profile')
+    path('profile',views.profile, name='profile'),
+    path('logout',views.logout_user, name='logout'),
 ]
 #you have to include the path of this file in main urls.py
 

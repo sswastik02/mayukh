@@ -40,7 +40,24 @@ def signup(request): #to make a form to accept this create forms.py
         #or just visited
     return render(request,'SignupForm.html',{'form':form}) #now make a template for this
 
+def home(request):
+    user=request.user
+    if user.is_authenticated:
+        member_profile=member.objects.get(username=request.user.username)
+        member_profile.current = 'active'
+        member_profile.save()
+    return render(request, 'home.html', {"user":user})
+
 @decorators.login_required
 def profile(request):
     member_profile=member.objects.get(username=request.user.username) # request.username gets tou the currently logged in user
     return render(request, 'profile.html', {'member':member_profile})
+
+@decorators.login_required
+def logout_user(request):
+    member_profile=member.objects.get(username=request.user.username)
+    member_profile.current = 'inactive'
+    member_profile.save()
+    logout(request)
+    return render(request, 'home.html', {"user":request.user}) # at home.html there is a user i know he is logged out but still it will render
+    #                                                               so you have to specify request.user

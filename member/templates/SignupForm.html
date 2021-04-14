@@ -1,24 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}  
 <!-- this basically populates the empty block in base.html -->
-
-<form action="/signup"  method="post" class="form_content">
+<div class="signup_container">
+<form action="/signup"  method="post" class="form_content" id="signup">
     {% csrf_token %}
+    <div class="form_title" id="signup">
+      <h1>Signup</h1>
+    </div>
     {% for field in form %}
-    <p>
-    {{ field.label_tag }}<br>
+    <div class="field_tag" id="signup">
+    {{ field.label_tag }}
+    </div>
+    <div class="field_blank" id="signup">
     {{ field }}
-    {% if field.help_text %}
-      <small style="color: grey">{{ field.help_text }}</small>
-    {% endif %}
+    </div>
     {% for error in field.errors %}
       <p style="color: red">{{ error }}</p>
     {% endfor %}
-    </p>
+    
     {% endfor %}
-    <br>
-    <input type="submit" value="Sign Up">
+    <div class="form_btn" id="signup">
+      <button class= "submit_btn" type="submit">Sign Up</button>
+    </div>
 </form>
+</div>
 <!-- Create url /signup in urls.py -->
 
 {% endblock %}

@@ -1,0 +1,10 @@
+Basic workflow:
+register app in setings.py and in admin.py
+include app urls in main urls.py
+create model --> create view --> create url --> create template -- > style using static(css js and image)
+    |               ^    |              ^
+    V               |    V              |
+    --> create validator  -->  create forms
+
+
+use ctrl + f5 to bypass cache because while using css it will cache
