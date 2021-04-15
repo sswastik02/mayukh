@@ -2,39 +2,29 @@
 {% block content %}  
 <!-- this basically populates the empty block in base.html -->
 <div class="profile_container">
-    <div class="form_content" id="profile">
+<div class="form_content" id="profile">
+    <div class="profile_field">
     <div class="form_title" id="profile">
         <h2>Profile</h2>
     </div>
-    <div class="field_tag" id="profile">Name:</div>
-    <div class="field_blank" id="profile">
-    {{member.first_name}} {{member.last_name}}
+    <div class="field_tag" id="profile">
+    <div class="field_cont"> <span>Name</span>: {{member.first_name}} {{member.last_name}} </div> 
     </div>
     <div class="field_tag" id="profile">
-    <span style="color: lightgreen;">Username:</span> 
-    </div>
-    <div class="field_blank" id="profile">
-        {{member.username}} 
-        </div>
-        <div class="field_tag" id="profile">
-        <span style="color: lightgreen;"> Designation:</span> 
-        </div>
-        <div class="field_blank" id="profile">
-         {{member.post}}
+        <div class="field_cont"><span>Username</span>: {{member.username}} </div>
     </div>
     <div class="field_tag" id="profile">
-    E-Mail: 
-    </div>
-    <div class="field_blank" id="profile">
-    {{member.mail}} 
+       <div class="field_cont"> <span>Designation</span>: {{member.post}}</div>
     </div>
     <div class="field_tag" id="profile">
-    Phone:
+    <div class="field_cont"> <span>E-Mail</span>: {{member.mail}} </div>
     </div>
-    <div class="field_blank" id="profile">
-     {{member.phone}}
-     </div>
-
+    <div class="field_tag" id="profile">
+    <div class="field_cont"> <span>Phone</span>: {{member.phone}}</div>    
+    </div>
+    </div>
+<!-- The point of putting all the span inside a div (you could use another span i guess) makes it one element otherwise it was displaying as 2 -->
+<!-- I need the span to edit each field label individually(for ex: set color green) -->
 </div>
 </div>
 

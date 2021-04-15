@@ -19,7 +19,7 @@
     height: 80px;
 
 }
-.nav_container {
+.nav_container, .menu{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,6 +27,8 @@
     width: 100%;
 
 }
+
+
 .nav_logo_container{
     background: #00C9FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -46,18 +48,26 @@
     font-size: 2.5rem;
     transition: all 0.3s ease;
 }
-.nav_menu{
-    justify-content: space-between;
+.navbar_menu{
     height: 100%;
     width:700px;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
+    list-style: none;
     
 }
+.navbar_menu_other {
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    list-style: none;
+    width:100%;
+}
 
-.nav_link{
+.navbar_item{
     background: #00d2ff;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -76,41 +86,145 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
 
 }
 
-.nav_link:hover {
+.navbar_item:hover {
     font-size: 2.2rem;
     transition: all 0.3s ease;
 }
 
-.navbar_menu_other {
-    justify-content: space-between;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
-.nav_link_other{
+
+.navbar_item_other button{
     background: #00d2ff;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 10px 20px;
+    right:10px;
+    height: 100%;
     margin: 0 10px;
     border-radius: 20px;
     color:white;    
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border:transparent;
+}
+
+.navbar_item_other button:hover {
+    padding: 12px 24px;
+    margin:none;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    border:transparent;
     transition: all 0.3s ease;
 }
 
-.nav_link_other:hover {
-    padding: 15px 30px;
-    margin: 0 20px;
-    border-radius: 40px;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
+.navbar_item_other button:focus {
+    outline: none;
+}
+
+@media screen and (max-width:960px) {
+    .menu{
+        position: absolute;
+        display:grid;
+        grid-template-rows: 1fr;
+        width:100vw;
+        /*top:80px; */
+        top:-1000px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        z-index:-1;
+        background-color: rgb(37, 37, 37);
+        transition: all 0.5s ease;
+
+    }
+    .navbar_menu, .navbar_menu_other{
+        display:grid;
+        grid-template-rows: 1fr;
+        width:100vw;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        z-index:-1;
+        transition: all 0.5s ease;
+    }
+    .navbar_item, .navbar_item_other {
+        margin:20px 0;
+        width: 100vw;
+        height: 70px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgb(107,107,107);
+        align-items: center;
+    }
+    #signup, #profile {
+        order:1
+    }
+    #login, #logout {
+        order:2
+    }
+    .navbar_item_other button{
+        font-size:1.4rem;
+        border-radius: 40px;
+        width: 30%;
+        height: 90%;
+    }
+    .navbar_item_other button:hover {
+        font-size:2.2rem;
+        border-radius: 80px;
+        width: 40%;
+        height: 100%;
+    }
+    .navbar_toggle {
+        padding:5px;
+        margin-right: 5px;
+        cursor: pointer;
+        border: 2px solid rgb(107,107,107);
+    }
+    .navbar_toggle .bar{    /*for adding class of a class space is needed  like h1 or a*/
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background:rgb(107,107,107);
+        display: block;
+        cursor: pointer;
+    }
+    .menu.active {        /* when u click on icon, look into js*/
+        background: rgb(37, 37, 37);
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        /*height: 70vh;   /*60% of view port height*/
+        /* specify height when it doesn't reach required height
+        otherwise elements will flex to fill and might do it unevenly */
+    }
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity :0;
+    }
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);    /*need js to execute this tranformations
+         as it needs to first  detect and then do the make mobile-menu active*/
+         /* is-active and active are their opposites in js */
+    }
+
 }
 .content {
-    background: rgb(175, 232, 255);
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 120vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
     background-image: url("/static/img/form_background.jpeg");
-    height: 100vh;
+    
 }
 .content .login_container{
     padding-top: 10vh;
@@ -118,9 +232,11 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
 .content .signup_container{
     padding-top: 5vh;
 }
-
+.content .profile_container{
+    padding-top: 5vh;
+}
 .content .form_content {
-    margin:0 25vw; /* 25vw cuz width is 50vw therefore centre at 25vw shift by 25vw to get desired results*/
+    margin:0 15vw; /* 25vw cuz width is 50vw therefore centre at 25vw shift by 25vw to get desired results*/
     background-color: rgba(0, 0, 245, 0.05);
     backdrop-filter:  saturate(100%) contrast(45%) brightness(130%); /* glass effect */
     border: 1px solid #fff;
@@ -128,6 +244,12 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     max-width: 70vw;
     max-height: 100vh;
+}
+@media screen and (max-width:960px) {
+    .content .form_content {
+        margin: 0 5vw;
+        max-width: 90vw
+    }
 }
 .content .field_tag, .field_blank, .form_title, .form_btn{
     display: flex;
@@ -181,19 +303,22 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     margin-top: 1vh;
 }
 
-.content .field_blank input, select{
+.content .field_blank input, select{     
+    /* These are for the fields and dropdown list corresponds to input and select */
+    min-width:10rem;
     width:25vw;
-    height: 2vw;
-    font-size: 1.8vw;
+    height: 1.8rem;
+    font-size: 1.5rem;
     background: transparent;
     border: 2px solid rgba(0, 0, 255, 0.3);
     color:gold;
 }
 .content .field_blank select {
-    font-size: 1vw;
+    font-size: 70%;
 }
 
 .content .field_blank select option{
+    /* this is for the dropdown menu itself */
     background-color: teal;
 }
 
@@ -201,4 +326,18 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     border: 2px solid rgb(0, 0, 255);
     outline:none;
 }
+
+.content .form_content#profile .field_cont {
+    text-align: left;
+    width:95%;            /* text align works on extra width */
+    /* I did this only for profile as i need the other forms such as login 
+    to be centre aligned but this to be left aligned there are several other 
+    efficient ways to achieve the same */
+    margin:1vh 0;
+}
+.content .form_content#profile span{
+    color:lightgreen;
+}
+
+
 
