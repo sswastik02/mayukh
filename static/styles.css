@@ -19,7 +19,10 @@
     height: 80px;
 
 }
-.nav_container, .menu{
+.nav_container, .menu{ /* an element mimicing the container of itself 
+    makes the element invisible as if the container containing the 
+    element is the only container to the contents of the element 
+    assuming the element is a conttainer */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -338,6 +341,148 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
 .content .form_content#profile span{
     color:lightgreen;
 }
+/* Hero Section */
+
+.hero {
+    background: #00B4DB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    min-height: 50vh;
+    max-height: 55vh;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.hero h1{
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom:60px;
+    color:white;
+}
+
+.hero h2{
+    font-size: 2rem;
+    text-align: center;
+    color:lightgreen;
+    margin-bottom: 20px;
+}
+@media screen and (max-width:430px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero h2{
+        font-size: 1.5rem;
+    }
+}
+/* About Section */
+
+.main {
+    background-image: url("/static/img/classical.jpeg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 80vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    
+}
+.main_img {
+    background-color: rgba(0, 0, 245, 0.05);
+    backdrop-filter:  saturate(100%) contrast(45%) brightness(130%); /* glass effect */
+    width:80%;
+    height: 80%;
+    margin:auto;  /* this centers the element (main_img) */
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.main_img .first, .second{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-top: 2px solid black;
+}
 
 
 
+.main_img img#teacher {
+    margin: auto; /* this helps centering */
+    border-radius: 50%;
+    width:20%;    /* % of repective row width which is 4 times the lower ones*/
+}
+.main_img img#student {
+    margin: auto;
+    border-radius: 50%;
+    width:40%;
+}
+
+
+
+.main_content{
+    margin:auto
+}
+
+.main_content .header {
+    width:100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main_content h1 {
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6 0%, #00F260 50%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6 0%, #00F260 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* The percentages actually tell the transition position in background you need to manually check it*/
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color:transparent;
+    font-size: 4rem;
+}
+.main_content .temp {
+    background-color: rgba(0, 0, 245, 0.05);
+    backdrop-filter: blur(5px) saturate(100%) contrast(45%) brightness(130%); /* glass effect */
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+
+}
+.main_content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.main_content p {
+    font-size: 1.5rem;
+}
+@media screen and (max-width:960px) {
+    .main_img img#teacher {
+        width:40%;   
+    }
+    .main_img img#student {
+        width:60%;
+    }
+    
+}
+
+@media screen and (max-width:500px) {
+    .main_content h1 {
+        font-size: 2.5rem;
+    }
+    .main_img img#teacher {
+        width:50%;   
+    }
+    .main_img img#student {
+        width:85%;
+    }
+    .main_content h2 {
+        font-size: 1.7rem;
+    }
+    .main_content p {
+        font-size: 1.2rem;
+    }
+}

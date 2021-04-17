@@ -1,1 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="home_page">
+    <div class="hero" id="home">
+        <div class="hero_container">
+        <h1><span>Master</span> the <span>Art</span> of <span>Dance</span></h1>
+        <h2>Join Mayukh Dance Classes Now </h2>
+        </div>
+    </div>
+</div>
+<div class="about_page">
+    <div class="main" id="about">
+        <div class="main_img">
+            <img id="teacher" src="{% static '/img/user.png' %}" alt="">
+            <div class="first">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            </div>
+            <div class="second">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            <img id="student" src="{% static '/img/user.png' %}" alt="">
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <h1>Who are we?</h1>
+            </div>
+            <!-- h2 and p werent visible so i put it in a glassy effect temporary container -->
+            <div class="temp"> 
+                <h2>The Graceful Mayukhs</h2>
+                <p>We believe that there is a mayukh in all of us, waiting to spread its wings to fly and sway to the tune of music</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
