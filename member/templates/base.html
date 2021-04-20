@@ -9,12 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mayukh</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://kit.fontawesome.com/c8019729d3.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav_container">
             <div class="nav_logo_container">
-                <a href="{% url 'home' %}#home" class="navbar_logo">Mayukh</a>
+                <a href="{% url 'home' %}" class="navbar_logo">Mayukh</a>
             </div>
             <div class="navbar_toggle" id="mobile-menu"> <!--".navbar_toggle#mobile-menu(tab)"-->
                 
@@ -32,7 +33,7 @@
                     <a href="{% url 'home' %}#about" class="navbar_links" id="about-page">About</a>
                 </li>
                 <li class="navbar_item">
-                    <a href="{% url 'home' %}#services" class="navbar_links" id="service-page">Service</a>
+                    <a href="{% url 'home' %}#courses" class="navbar_links" id="courses-page">Courses</a>
                 </li>
             </ul>
             <ul class="navbar_menu_other">
@@ -50,6 +51,19 @@
     <div class="content" id="content">
         {% block content %}{% endblock %} 
         <!-- it is the block action that is manipulated by child elements -->
+    </div>
+    <div class="footer">
+        <div class="content_footer">
+            <br>
+            <p> <a href="/" class="footer_logo">Mayukh</a> ©. All rights reserved</p>
+        </div>
+        <div class="social_links">
+            <a href="/" class="social_icon" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="/" class="social_icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="/" class="social_icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="/" class="social_icon" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="/" class="social_icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
     </div>
     <script src="{% static 'app.js' %}"></script>
 </body>

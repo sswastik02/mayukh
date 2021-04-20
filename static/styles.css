@@ -4,9 +4,8 @@
     scroll-behavior: smooth;
     text-decoration: none;
     padding: 0;
-    margin: 0; /* this removes unneccessary margin */
+    margin: 0; /* this removes unneccessary margin and padding */
 }
-
 .navbar{
     background-color: rgb(37, 37, 37);
     margin: none;
@@ -14,12 +13,15 @@
     align-items: center;
     display: flex;
     position:sticky;
+    position: -webkit-sticky;
     top:0;  /* this is important */
     z-index: 999;
     height: 80px;
+    width: 100%;
 
 }
-.nav_container, .menu{ /* an element mimicing the container of itself 
+.nav_container, .menu{ 
+    /* an element mimicing the container of itself 
     makes the element invisible as if the container containing the 
     element is the only container to the contents of the element 
     assuming the element is a conttainer */
@@ -220,23 +222,55 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     }
 
 }
-.content {
+
+@media screen and (max-width:400px) {
+    .navbar_item_other button {
+        width:40%;
+    }
+
+    .navbar_item_other button:hover {
+        width: 50%;
+    }
+}
+
+@media screen and (max-height:630px), screen and (max-width:960px) {  /* landscape implementation of navbar also specified max-width cuz mobilemenu needs to be active*/
+
+    .navbar_item, .navbar_item_other {
+        margin:1px 0;
+        padding:0;
+        height: 50px;
+    }
+    .navbar_menu, .navbar_menu_other {
+        grid-template-rows: 0.2fr;
+    }
+
+}
+
+html, .content .login_container, .profile_container, .signup_container{
     background-color: #cccccc; /* Used if the image is unavailable */
-    height: 120vh; /* You must set a specified height */
+    min-height:100vh;
+    height: max-content; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
+    -webkit-background-size: cover;
+    -moz-border-size: cover;
     background-image: url("/static/img/form_background.jpeg");
     
-}
+}    /* the reason i specified container names is because the navbar was taking
+    height as 120vh and stopping there(the background) and since content is actually the entire
+    structure in the base.html the navbar is also defined in the same html 
+    considered it an end */
+
 .content .login_container{
-    padding-top: 10vh;
+    padding-top: 20px;
 }
 .content .signup_container{
-    padding-top: 5vh;
+    padding-top: 20px;
+    margin-bottom:40px;
 }
 .content .profile_container{
-    padding-top: 5vh;
+    padding-top: 50px;
 }
 .content .form_content {
     margin:0 15vw; /* 25vw cuz width is 50vw therefore centre at 25vw shift by 25vw to get desired results*/
@@ -246,7 +280,8 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     border-radius: 15px;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     max-width: 70vw;
-    max-height: 100vh;
+    height:max-content;
+    
 }
 @media screen and (max-width:960px) {
     .content .form_content {
@@ -267,11 +302,12 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     padding-bottom: 20px;
 }
 
+
 .content .form_btn button {
     position: relative;
     margin: 2vh 0;
-    width: 40vw;
-    height: 5vh;
+    width: 60%;
+    height: 40px;
     color: blue;
     border: 2px solid blue;
     background-color: transparent;
@@ -347,8 +383,7 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     background: #00B4DB;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    min-height: 50vh;
-    max-height: 55vh;
+    height: max-content;
     align-items: center;
     justify-content: center;
     padding: 50px;
@@ -381,7 +416,8 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
 .main {
     background-image: url("/static/img/classical.jpeg");
     background-color: #cccccc; /* Used if the image is unavailable */
-    height: 80vh; /* You must set a specified height */
+    min-height: 90vh; /* You must set a specified height */
+    height: max-content;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -390,6 +426,12 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     align-items: center;
     
 }
+
+.main .blank {
+    height: 20px;
+    visibility: hidden;
+}
+
 .main_img {
     background-color: rgba(0, 0, 245, 0.05);
     backdrop-filter:  saturate(100%) contrast(45%) brightness(130%); /* glass effect */
@@ -420,10 +462,10 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
     width:40%;
 }
 
-
+/* About Section */
 
 .main_content{
-    margin:auto
+    margin:auto;
 }
 
 .main_content .header {
@@ -470,19 +512,88 @@ background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, F
 }
 
 @media screen and (max-width:500px) {
-    .main_content h1 {
-        font-size: 2.5rem;
+    .main {
+        grid-template-columns: 1fr;
+        
     }
-    .main_img img#teacher {
-        width:50%;   
+    
+}
+
+/* Courses Section */
+
+
+.courses {
+    display: grid;
+    grid-template-rows:0.1fr 1fr; /* the height was very large as the other container( 4 videos) so made it smaller(0.2) */
+    width:100%;
+    text-align: center;
+    background-color: gray;
+}
+
+.courses_page .courses_header{
+    font-size: 2rem;
+    margin: 30px 0;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6 0%, #00F260 50%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6 0%, #00F260 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color:transparent;
+}
+
+.courses_page .courses_videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.courses_page .courses_videos .videofile{ /* dont try to edit the video file itself edit the container of it */
+    margin: 40px auto;   /* only left right need to be auto for align */
+    text-align: center;
+    padding:20px;
+    border:2px solid black;
+    width:90%;
+}
+
+.courses_page .courses_videos .videofile video{
+    width:100%;
+}
+
+.courses_page .courses_videos .videofile h2 {
+    margin: 30px 0;
+    border-bottom: 2px solid black;    /* the spacing in the border is due to padding */
+    padding-bottom: 10px;                /* not this one the one in videofile*/
+}
+
+@media screen and (max-width:1110px) {
+    .courses_page {
+        grid-template-rows: 0.01fr 1fr;
     }
-    .main_img img#student {
-        width:85%;
+    .courses_page .courses_videos{
+        grid-template-columns: 1fr;
     }
-    .main_content h2 {
-        font-size: 1.7rem;
-    }
-    .main_content p {
-        font-size: 1.2rem;
-    }
+}
+
+.footer {
+    background:rgb(47, 47, 47);
+    height: 100px;
+    color:white;
+    text-align: center;
+}
+.footer .content_footer{
+    margin-bottom:5px;
+}
+.footer .footer_logo{
+    color:white;
+    text-decoration: none;
+}
+
+
+.footer .social_links {
+    margin:auto;
+    font-size:2rem;
+}
+
+.footer .social_links .social_icon {
+    color:white;
 }

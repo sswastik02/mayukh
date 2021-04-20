@@ -14,6 +14,14 @@
     <div class="main" id="about">
         <div class="main_img">
             <img id="teacher" src="{% static '/img/user.png' %}" alt="">
+            <!--.main_img img#teacher {
+            position: absolute; /* relative to the container as its the nearest relative position element */
+            top:10%;
+            left:50%; /*this will put image top left corner at 50% of container*/
+            transform: translate(-50%, -10%); /* this will pull the image left half of its (image) width (regarding x-axis) */
+            width:20%;  /* it maintains aspect ratio */
+            border-radius: 50%;
+} -->
             <div class="first">
             <img id="student" src="{% static '/img/user.png' %}" alt="">
             <img id="student" src="{% static '/img/user.png' %}" alt="">
@@ -35,6 +43,36 @@
             <div class="temp"> 
                 <h2>The Graceful Mayukhs</h2>
                 <p>We believe that there is a mayukh in all of us, waiting to spread its wings to fly and sway to the tune of music</p>
+            </div>
+        </div>
+        <span class="blank"></span>  
+        <!-- /* background was sticking so i used a blank cuz background height is set to max-content */ -->
+    </div>
+</div>
+<div class="courses_page">
+    <div class="courses" id="courses">
+        <div class="courses_header">
+            <h1>Courses</h1>
+        </div>
+        <div class="courses_videos">
+            <div class="videofile">
+                <h2>Title1</h2>
+                <video src="{% static 'img/video1.mp4' %}" controls controlsList="nodownload" autoplay muted loop width="500px"></video>
+            </div>
+             <div class="videofile">
+                <h2>Title2</h2>
+                <video src="{% static 'img/video2.mp4' %}" controls controlsList="nodownload" autoplay muted loop width="500px"></video>
+            
+            </div>
+             <div class="videofile">
+                <h2>Title3</h2>
+                <video src="{% static 'img/video3.mp4' %}" controls controlsList="nodownload" autoplay muted loop width="500px"></video>
+            
+            </div>
+            <div class="videofile">
+                <h2>Title4</h2>
+                <video src="{% static 'img/video4.mp4' %}" controls controlsList="nodownload" autoplay muted loop width="500px"></video>
+            
             </div>
         </div>
     </div>
