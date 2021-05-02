@@ -350,7 +350,7 @@ html, .content .login_container, .profile_container, .signup_container{
     font-size: 1.5rem;
     background: transparent;
     border: 2px solid rgba(0, 0, 255, 0.3);
-    color:gold;
+    color:white;
 }
 .content .field_blank select {
     font-size: 70%;
