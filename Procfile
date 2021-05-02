@@ -1,1 +1,1 @@
-web: gunicorn mayukh.wsgi
+web: gunicorn mayukh.wsgi --lod-file -
